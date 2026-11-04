@@ -1,0 +1,12 @@
+PRUEBA DE RUPTURA INTENCIONAL DEL PAYLOAD CIFRADO (AES-128-GCM)
+================================================================
+Control: mensajes legitimos rechazados en 6 s antes de la prueba: 0
+
+Mensaje original : +tiqa34ja8/Ezf3q9ixogRsuNDFKFguBJMdP8QYLzw==
+Mensaje alterado : +tiqa34ja8/Ezf3q9yxogRsuNDFKFguBJMdP8QYLzw==
+Byte cambiado    : posicion 12, 0xf6 -> 0xf7
+Publicado. En el dashboard debe aparecer RECHAZADO en vez de un valor raro.
+
+Lo que registro Node-RED (nodo 'Descifrar AES-GCM'):
+----------------------------------------------------------------
+3 Nov 12:26:32 - [warn] [function:Descifrar AES-GCM] pot/value RECHAZADO (tag invalido, el mensaje fue alterado): +tiqa34ja8/Ezf3q9yxogRsuNDFKFguBJMdP8QYLzw==

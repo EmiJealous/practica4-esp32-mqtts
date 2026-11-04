@@ -1,0 +1,51 @@
+================================================================
+PRUEBA: 1. Conexion con la CA correcta (debe funcionar)
+$ mosquitto_sub -h localhost -p 8883 --cafile certs/ca.crt -u panel -P ******** -t iot/prueba -C 1 -v
+----------------------------------------------------------------
+iot/prueba hola por TLS
+codigo de salida: 0
+================================================================
+PRUEBA: 2. Conexion SIN certificado (debe ser rechazada)
+$ mosquitto_pub -h localhost -p 8883 -u panel -P ******** -t iot/prueba -m x
+----------------------------------------------------------------
+Error: Protocol error
+codigo de salida: 14
+================================================================
+PRUEBA: 3. Conexion con una CA distinta / falsa (debe ser rechazada)
+$ mosquitto_pub -h localhost -p 8883 --cafile certs/ca_falsa.crt -u panel -P ******** -t iot/prueba -m x
+----------------------------------------------------------------
+Error: Protocol error
+codigo de salida: 14
+================================================================
+PRUEBA: 4. CA correcta pero password incorrecto (debe ser rechazada)
+$ mosquitto_pub -h localhost -p 8883 --cafile certs/ca.crt -u panel -P password_mal -t iot/prueba -m x
+----------------------------------------------------------------
+Connection error: Connection Refused: not authorised
+Error: The connection was refused
+codigo de salida: 5
+================================================================
+DETALLE: lo que dice el broker (/opt/homebrew/var/log/mosquitto.log) durante las pruebas 2, 3 y 4
+----------------------------------------------------------------
+1793727857: Client auto-90C21FB2-40E1-0F5A-9292-C68C53CCF9A2 [127.0.0.1:51763] disconnected: connection closed by client.
+1793727857: Client auto-8788CF21-1669-6C6E-3A8B-7AC324DC9D8D [127.0.0.1:51761] disconnected.
+1793727857: Client auto-8788CF21-1669-6C6E-3A8B-7AC324DC9D8D [127.0.0.1:51761] disconnected: connection closed by client.
+1793727857: OpenSSL Error while trying to get the error[0]: error:0A000418:SSL routines::tlsv1 alert unknown ca
+1793727857: Client 127.0.0.1 [127.0.0.1:51765] disconnected: Protocol error.
+1793727857: OpenSSL Error while trying to get the error[0]: error:0A000418:SSL routines::tlsv1 alert unknown ca
+1793727857: Client 127.0.0.1 [127.0.0.1:51767] disconnected: Protocol error.
+1793727857: Client auto-23B3DC5C-F4C1-70E5-AFD8-6C6A2D36543A [127.0.0.1:51769] disconnected: not authorised.
+================================================================
+DETALLE: verificacion del certificado del broker con la CA FALSA
+$ openssl s_client -connect localhost:8883 -CAfile certs/ca_falsa.crt -verify_return_error
+----------------------------------------------------------------
+verify error:num=19:self-signed certificate in certificate chain
+80BF17F901000000:error:0A000086:SSL routines:tls_post_process_server_certificate:certificate verify failed:ssl/statem/statem_clnt.c:2126:
+Verification error: self-signed certificate in certificate chain
+Verify return code: 19 (self-signed certificate in certificate chain)
+================================================================
+DETALLE: misma verificacion con la CA CORRECTA
+$ openssl s_client -connect localhost:8883 -CAfile certs/ca.crt -verify_return_error
+----------------------------------------------------------------
+verify return:1
+verify return:1
+Verification: OK

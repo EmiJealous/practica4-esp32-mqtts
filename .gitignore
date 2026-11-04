@@ -1,0 +1,14 @@
+# Credenciales locales (WiFi, usuarios del broker, clave AES)
+.secrets/
+
+# Llaves privadas y archivos internos de la CA: NUNCA se suben
+certs/*.key
+certs/*.srl
+certs/*.csr
+
+# Compilacion y entorno de Python
+build/
+.venv/
+__pycache__/
+
+.DS_Store

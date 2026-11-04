@@ -1,0 +1,7 @@
+entry 0x400805b4
+Conectando a WiFi '<SSID>'........ conectado. IP: 172.20.10.3
+Sincronizando hora por NTP.... listo: Tue Nov  3 12:20:03 2026
+Conectando a MQTTS 172.20.10.2:8883... conectado (TLS OK, certificado del broker verificado).
+light/status -> {"mode":"ON","color":"RED","time":0,"pot":0}
+Sistema listo. Client ID: ESP32-EC2D84077000
+

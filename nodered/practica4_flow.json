@@ -1,0 +1,732 @@
+[
+  {
+    "id": "t1",
+    "type": "tab",
+    "label": "Practica 4 - Dashboard MQTTS",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "broker1",
+    "type": "mqtt-broker",
+    "name": "Mosquitto TLS",
+    "broker": "localhost",
+    "port": "8883",
+    "clientid": "",
+    "autoConnect": true,
+    "usetls": true,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "birthMsg": {},
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "closeMsg": {},
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "willMsg": {},
+    "userProps": "",
+    "sessionExpiry": "",
+    "tls": "tls_ca"
+  },
+  {
+    "id": "ui_base1",
+    "type": "ui-base",
+    "name": "Practica 4 Dashboard",
+    "path": "/dashboard",
+    "appIcon": "",
+    "includeClientData": true,
+    "acceptsClientConfig": [
+      "ui-notification",
+      "ui-control"
+    ],
+    "showPathInSidebar": false,
+    "headerContent": "page",
+    "navigationStyle": "default",
+    "titleBarStyle": "default",
+    "showReconnectNotification": true,
+    "notificationDisplayTime": 10
+  },
+  {
+    "id": "page1",
+    "type": "ui-page",
+    "name": "Practica 4",
+    "ui": "ui_base1",
+    "path": "/practica3",
+    "icon": "home",
+    "layout": "grid",
+    "theme": "",
+    "breakpoints": [
+      {
+        "name": "Default",
+        "px": "0",
+        "cols": "3"
+      },
+      {
+        "name": "Tablet",
+        "px": "576",
+        "cols": "6"
+      },
+      {
+        "name": "Small Desktop",
+        "px": "768",
+        "cols": "9"
+      },
+      {
+        "name": "Desktop",
+        "px": "1024",
+        "cols": "12"
+      }
+    ],
+    "order": 1,
+    "className": "",
+    "visible": "true",
+    "disabled": "false"
+  },
+  {
+    "id": "group_control",
+    "type": "ui-group",
+    "name": "Control del LED RGB",
+    "page": "page1",
+    "width": "6",
+    "height": "1",
+    "order": 1,
+    "showTitle": true,
+    "className": "",
+    "visible": "true",
+    "disabled": "false",
+    "groupType": "default"
+  },
+  {
+    "id": "group_tele",
+    "type": "ui-group",
+    "name": "Telemetria",
+    "page": "page1",
+    "width": "6",
+    "height": "1",
+    "order": 2,
+    "showTitle": true,
+    "className": "",
+    "visible": "true",
+    "disabled": "false",
+    "groupType": "default"
+  },
+  {
+    "id": "mqtt_out_control",
+    "type": "mqtt out",
+    "z": "t1",
+    "name": "-> light/control",
+    "topic": "iot/equipo1/light/control",
+    "qos": "",
+    "retain": "",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker1",
+    "x": 1000,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "btn_on",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton ON",
+    "label": "ON",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "ON",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#C0C0C0",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 60,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_off",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton OFF",
+    "label": "OFF",
+    "order": 2,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "OFF",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#008080",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 100,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_auto",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton AUTO",
+    "label": "AUTO",
+    "order": 3,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "AUTO",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#800080",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 140,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_status",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton STATUS",
+    "label": "STATUS",
+    "order": 4,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "STATUS",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#000080",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 180,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_red",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton Rojo",
+    "label": "Rojo",
+    "order": 5,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "#ff4d4d",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "COLOR:RED",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#FF0000",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 220,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_green",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton Verde",
+    "label": "Verde",
+    "order": 6,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "#4caf50",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "COLOR:GREEN",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#008000",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 260,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "btn_blue",
+    "type": "ui-button",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Boton Azul",
+    "label": "Azul",
+    "order": 7,
+    "width": 0,
+    "height": 0,
+    "emulateClick": false,
+    "tooltip": "",
+    "color": "",
+    "bgcolor": "#3b82f6",
+    "className": "",
+    "icon": "",
+    "iconPosition": "left",
+    "payload": "COLOR:BLUE",
+    "payloadType": "str",
+    "topic": "",
+    "topicType": "str",
+    "buttonColor": "#0000FF",
+    "textColor": "",
+    "iconColor": "",
+    "enableClick": true,
+    "enablePointerdown": false,
+    "pointerdownPayload": "",
+    "pointerdownPayloadType": "str",
+    "enablePointerup": false,
+    "pointerupPayload": "",
+    "pointerupPayloadType": "str",
+    "x": 140,
+    "y": 300,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "sld_blink",
+    "type": "ui-slider",
+    "z": "t1",
+    "group": "group_control",
+    "name": "Slider BLINK",
+    "label": "Frecuencia BLINK (Hz)",
+    "tooltip": "",
+    "order": 8,
+    "width": "6",
+    "height": "1",
+    "passthru": true,
+    "outs": "end",
+    "topic": "",
+    "topicType": "str",
+    "showTicks": "false",
+    "min": 0.5,
+    "max": 10,
+    "step": 0.5,
+    "className": "",
+    "iconPrepend": "",
+    "iconAppend": "",
+    "color": "red",
+    "colorTrack": "green",
+    "colorThumb": "",
+    "showTextField": false,
+    "x": 140,
+    "y": 360,
+    "wires": [
+      [
+        "func_blink"
+      ]
+    ]
+  },
+  {
+    "id": "func_blink",
+    "type": "function",
+    "z": "t1",
+    "name": "Formatear BLINK:x",
+    "func": "msg.payload = \"BLINK:\" + msg.payload;\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 420,
+    "y": 360,
+    "wires": [
+      [
+        "mqtt_out_control"
+      ]
+    ]
+  },
+  {
+    "id": "in_pot",
+    "type": "mqtt in",
+    "z": "t1",
+    "name": "pot/value",
+    "topic": "iot/equipo1/pot/value",
+    "qos": "0",
+    "datatype": "utf8",
+    "broker": "broker1",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 140,
+    "y": 440,
+    "wires": [
+      [
+        "func_descifrar"
+      ]
+    ]
+  },
+  {
+    "id": "gauge_pot",
+    "type": "ui-gauge",
+    "z": "t1",
+    "group": "group_tele",
+    "order": 1,
+    "width": 0,
+    "height": 0,
+    "gtype": "gage",
+    "title": "Potenciometro",
+    "segments": [],
+    "min": 0,
+    "max": 100,
+    "className": "",
+    "x": 420,
+    "y": 420,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "chart_pot",
+    "type": "ui-chart",
+    "z": "t1",
+    "group": "group_tele",
+    "label": "Potenciometro (tiempo)",
+    "order": 2,
+    "chartType": "line",
+    "category": "Pot",
+    "ymin": "0",
+    "ymax": "100",
+    "removeOlder": 1,
+    "removeOlderUnit": "3600",
+    "removeOlderPoints": "",
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "width": 0,
+    "height": 0,
+    "x": 420,
+    "y": 460,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "in_light_status",
+    "type": "mqtt in",
+    "z": "t1",
+    "name": "light/status",
+    "topic": "iot/equipo1/light/status",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker1",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 140,
+    "y": 520,
+    "wires": [
+      [
+        "func_format_status"
+      ]
+    ]
+  },
+  {
+    "id": "text_light_status",
+    "type": "ui-text",
+    "z": "t1",
+    "group": "group_tele",
+    "order": 3,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "light/status",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "x": 560,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "in_button_event",
+    "type": "mqtt in",
+    "z": "t1",
+    "name": "button/event",
+    "topic": "iot/equipo1/button/event",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker1",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 150,
+    "y": 580,
+    "wires": [
+      [
+        "text_button_event"
+      ]
+    ]
+  },
+  {
+    "id": "text_button_event",
+    "type": "ui-text",
+    "z": "t1",
+    "group": "group_tele",
+    "order": 4,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "button/event",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "x": 420,
+    "y": 580,
+    "wires": []
+  },
+  {
+    "id": "in_device_status",
+    "type": "mqtt in",
+    "z": "t1",
+    "name": "device/status",
+    "topic": "iot/equipo1/device/status",
+    "qos": "0",
+    "datatype": "auto-detect",
+    "broker": "broker1",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "x": 150,
+    "y": 640,
+    "wires": [
+      [
+        "text_device_status"
+      ]
+    ]
+  },
+  {
+    "id": "text_device_status",
+    "type": "ui-text",
+    "z": "t1",
+    "group": "group_tele",
+    "order": 5,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "device/status",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "x": 420,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "func_format_status",
+    "type": "function",
+    "z": "t1",
+    "name": "Formatear STATUS legible",
+    "func": "let data = msg.payload;\nif (typeof data === \"string\") {\n    try { data = JSON.parse(data); } catch (e) { return msg; }\n}\n\nlet texto = \"Modo: \" + data.mode + \"  |  Color: \" + data.color;\n\nif (data.mode === \"BLINK\" && data.freq !== undefined) {\n    texto += \"  |  Frecuencia: \" + data.freq + \" Hz\";\n}\n\ntexto += \"  |  Tiempo desde el ultimo cambio: \" + data.time + \"s\";\ntexto += \"  |  Potenciometro: \" + data.pot;\n\nmsg.payload = texto;\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 280,
+    "y": 520,
+    "wires": [
+      [
+        "text_light_status"
+      ]
+    ]
+  },
+  {
+    "id": "tls_ca",
+    "type": "tls-config",
+    "name": "CA Practica 4",
+    "cert": "",
+    "key": "",
+    "ca": "/Users/emanuelvargasmora/practica4-esp32-mqtts/certs/ca.crt",
+    "certname": "",
+    "keyname": "",
+    "caname": "",
+    "servername": "",
+    "verifyservercert": true,
+    "alpnprotocol": ""
+  },
+  {
+    "id": "func_descifrar",
+    "type": "function",
+    "z": "t1",
+    "name": "Descifrar AES-GCM",
+    "func": "// Descifra el potenciometro: Base64( nonce[12] | cifrado | tag[16] ) con AES-128-GCM.\n// Salida 1: valor valido -> gauge y grafica\n// Salida 2: aviso cuando el mensaje fue alterado (no se muestra ningun valor corrupto)\nconst NONCE_LEN = 12;\nconst TAG_LEN = 16;\n\nconst clave = Buffer.from(env.get(\"AES_KEY_HEX\") || \"\", \"hex\");\nif (clave.length !== 16) {\n    node.error(\"Falta AES_KEY_HEX: arranca Node-RED con herramientas/iniciar_nodered.sh\");\n    return null;\n}\n\nconst paquete = Buffer.from(String(msg.payload), \"base64\");\nif (paquete.length <= NONCE_LEN + TAG_LEN) {\n    return rechazar(\"mensaje demasiado corto\");\n}\n\nconst nonce = paquete.subarray(0, NONCE_LEN);\nconst cifrado = paquete.subarray(NONCE_LEN, paquete.length - TAG_LEN);\nconst tag = paquete.subarray(paquete.length - TAG_LEN);\n\ntry {\n    const descifrador = crypto.createDecipheriv(\"aes-128-gcm\", clave, nonce);\n    descifrador.setAuthTag(tag);\n    // final() truena si el tag no cuadra, o sea si alguien cambio aunque sea un bit\n    const texto = Buffer.concat([descifrador.update(cifrado), descifrador.final()]).toString(\"utf8\");\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"OK: \" + texto + \"%\" });\n    return [{ payload: parseFloat(texto) }, null];\n} catch (e) {\n    return rechazar(\"tag invalido, el mensaje fue alterado\");\n}\n\nfunction rechazar(motivo) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"RECHAZADO: \" + motivo });\n    node.warn(\"pot/value RECHAZADO (\" + motivo + \"): \" + msg.payload);\n    return [null, { payload: \"RECHAZADO \" + new Date().toLocaleTimeString() + \" - \" + motivo }];\n}",
+    "outputs": 2,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [
+      {
+        "var": "crypto",
+        "module": "crypto"
+      }
+    ],
+    "x": 300,
+    "y": 440,
+    "wires": [
+      [
+        "gauge_pot",
+        "chart_pot"
+      ],
+      [
+        "text_seguridad"
+      ]
+    ]
+  },
+  {
+    "id": "text_seguridad",
+    "type": "ui-text",
+    "z": "t1",
+    "group": "group_tele",
+    "order": 6,
+    "width": 0,
+    "height": 0,
+    "name": "",
+    "label": "Seguridad (pot/value)",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "className": "",
+    "x": 560,
+    "y": 480,
+    "wires": []
+  }
+]
